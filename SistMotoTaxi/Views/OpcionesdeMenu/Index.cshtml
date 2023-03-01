@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container g-pt-120 g-pb-150">
+    <div class="row">
+        <div class="col-lg-12 g-mb-30 g-mb-0--lg">
+            <div class="row">
+                <div class="masonry-grid row g-mb-20">
+                    <div class="col-lg-4 g-mb-30 g-mb-0--lg">
+                        <article class="u-shadow-v11 rounded g-pa-30">
+
+                            <div class="media">
+                                <div class="media-body">
+                                    <span class="d-block g-mb-3 g-font-size-22 g-color-gray-dark-v1 g-font-secondary">Modificar Rol</span>
+                                </div>
+                            </div>
+
+                            <hr class="g-brd-gray-light-v4">
+
+                            <div>
+                                @using (Html.BeginForm("Index", "OpcionesdeMenu", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+                                    <div class="form-group m-b-20">
+                                        <input type="text" class="form-control input-lg" placeholder="IdUsuario" name=" iduser" />
+                                    </div>
+                                    <div class="form-group m-b-20">
+                                        <input type="password" class="form-control input-lg" placeholder="Contraseña" name="contrasena" />
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" class="btn btn-success btn-block btn-lg">Guardar Cambios </button>
+                                    </div>
+                                }
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-lg-8 g-mb-30 g-mb-0--lg">
+                        <h3 class="h5 g-mb-10 sub-titulo">Dirección de Registro y Control de Transportes</h3>
+                        <p class="text-justify">
+                            Sistema de emisión de Constancias de Autorización de Plataformas Tecnológicas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,217 @@
+﻿@{
+    SistMotoTaxi.Models.Usuarios oUsuario = (SistMotoTaxi.Models.Usuarios)Session["Usuario"];
+}
+
+<!DOCTYPE html>
+<html lang="Esp_MX">
+
+<head>
+    <title>Secretaría de Movilidad y Transporte</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="~/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/offcanvas.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="~/assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="~/assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="~/assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+    <link rel="stylesheet" href="~/assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+    <link rel="stylesheet" href="~/assets/vendor/animate.css">
+    <link rel="stylesheet" href="~/assets//vendor/typedjs/typed.css">
+    <link rel="stylesheet" href="~/assets/vendor/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="~/assets/vendor/slick-carousel/slick/slick.css">
+
+    <link rel="stylesheet" href="~/assets/css/unify-core.css">
+    <link rel="stylesheet" href="~/assets/css/unify-components.css">
+    <link rel="stylesheet" href="~/assets/css/unify-globals.css">
+
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+    <link rel="stylesheet" href="~/assets/css/personalizado.css">
+    @RenderSection("tablaCSS", required: false)
+    @RenderSection("Grafica", required: false)
+</head>
+
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-128342308-1'></script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128342308-1');
+</script>
+
+<body>
+    <header id="js-header" class="u-header u-header--sticky-top u-header--toggle-section" data-header-fix-moment="300">
+        <div class="u-header__section u-header__section--light  g-transition-0_3" data-header-fix-moment-exclude="" data-header-fix-moment-classes="u-shadow-v18 g-py-0" style="background-color: #333">
+            <nav class="navbar navbar-expand-lg g-pa-0 g-pt-4 g-pb-4">
+                <div class="container">
+                    <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-3 g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                        <span class="hamburger hamburger--slider">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <a href="http://www.chiapas.gob.mx/" class="navbar-brand"><img src="~/assets/logo/escudo-icono.png" alt=""></a>
+                    <a href="http://www.chiapas.gob.mx/" class="g-color-white-opacity-0_9 g-font-size-16 g-font-weight-300 g-font-secondary">chiapas<span class="g-color-white-opacity-0_6">.gob.mx</span></a>
+                    <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar"> 
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <section>
+            <div class="g-brd-around  g-brd-1 g-brd-gray-light-v4-top g-brd-gray-light-v4-bottom g-color-white-opacity-0_9" role="alert" style="background-color: #d0d0d0;">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg navbar-light g-pa-0 g-right-0 g-pt-4 g-pb-4" style="background-color: #d0d0d0">
+                        <a class="navbar-brand g-color-morado g-font-weight-600 g-font-size-16  d-none d-sm-none d-md-none d-lg-none d-xl-block g-text-underline--hover" href="@Url.Action("Inicio", "Menu")">Secretaría de Movilidad y Transporte</a>
+                        <a class="navbar-brand g-color-morado g-font-weight-600 g-font-size-16  d-sm-block d-md-block d-lg-block d-xl-none g-text-underline--hover" href="@Url.Action("Inicio", "Menu")">SMyT</a>
+                       
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto g-font-size-15 g-font-weight-100">
+
+
+                                @*ADMINISTRADOR*@
+
+                                @if (Convert.ToInt32(oUsuario.IdRol) == 1)
+                                {
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("GetJsonData","Usuarios")">Usuarios</a></li>
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Crear","Rol")">Modificar Rol</a></li>
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Alta","Usuarios")">Nuevo Usuario</a></li>
+
+                                    <input type="checkbox" id="menu-check" />
+                                    <label for="menu-check" href="@Url.Action("AltaUsuario","Home")">
+                                        <div class="btn-menu">
+                                            <div class="stick1"></div>
+                                            <div class="stick2"></div>
+                                            <div class="stick3"></div>
+                                        </div>
+                                    </label>
+
+
+                                }
+
+
+
+                                @if (Convert.ToInt32(oUsuario.IdRol) == 3)
+                                {
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Permiso","SolicitantePermiso")">Ver Constancias</a></li>
+                                }
+
+                                @*USUARIOS*@
+                                @if (Convert.ToInt32(oUsuario.IdRol) == 2)
+                                {
+                                    @*<li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("CargA", "CargArch")">Cargar Archivos</a></li>
+            <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Index", "Utileria")">Utileria</a></li>*@
+
+
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Roles","Usuarios")">Modificar Rol</a></li>
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Alta","Usuarios")">Nuevo Usuario</a></li>
+
+
+                                    <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("Bandeja", "Usuarios")">Usuarios</a></li>
+
+                                }
+
+                                <li class="nav-item g-mx-5--lg"><a style="color: " #3f3d3d;"="" class="nav-link g-color-white--hover g-bg-morado--hover g-rounded-3 g-color-black-opacity-0_9" href="@Url.Action("LogOff", "Home")">Cerrar Sesión</a></li>
+
+                                @*redireccionar a la accion  logogg*@
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </header>
+    @RenderBody()
+    <!-- FOOTER-->
+    <div class="g-bg-black-opacity-0_8 g-color-white-opacity-0_8 g-py-20" style="background-color: #c2b082;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 g-mb-20 g-mb-0--lg">
+                    <img class="img-fluid" src="~/assets/logo/logo_blanco.png" alt="Logo">
+                </div>
+                <div class="col-lg-4 col-md-6">f
+                    <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8"><h2 class="u-heading-v2__title h6 mb-0">Contáctanos</h2></div>
+                    <address class="g-bg-no-repeat g-line-height-2 g-mt-minus-4" style="background-image: url(../assets/img/maps/map2.png);">
+                        11 Poniente Sur No. 930, Fraccionamiento Las Terrazas<br>Tuxtla Gutiérrez, Chiapas<br>Conmutador: (961) 61 11919
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/assets/vendor/popper.js/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <script src="~/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+    <script src="~/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+    <script src="~/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+    <script src="~/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+    <script src="~/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+    <script src="~/assets/vendor/slick-carousel/slick/slick.js"></script>
+
+    <script src="~/assets/js/hs.core.js"></script>
+    <script src="~/assets/vendor/typedjs/typed.min.js"></script>
+    <script src="~/assets/js/components/hs.header.js"></script>
+    <script src="~/assets/js/helpers/hs.hamburgers.js"></script>
+    <script src="~/assets/js/components/hs.dropdown.js"></script>
+    <script src="~/assets/js/components/hs.popup.js"></script>
+    <script src="~/assets/js/components/hs.carousel.js"></script>
+    <script src="~/assets/js/components/hs.go-to.js"></script>
+
+    <script src="~/assets/js/custom.js"></script>
+
+    @RenderSection("imprimir", required: false)
+    @RenderSection("expediente", required: false)
+    @RenderSection("inicio", required: false)
+
+
+    <script>
+        $(document).on('ready', function () {
+
+            $.HSCore.components.HSHeader.init($('#js-header'));
+            $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+            $('.js-mega-menu').HSMegaMenu({
+                event: 'hover',
+                pageContainer: $('.container'),
+                breakpoint: 991
+            });
+
+            $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
+                afterOpen: function () {
+                    $(this).find('input[type="search"]').focus();
+                }
+            });
+
+            $.HSCore.components.HSPopup.init('.js-fancybox');
+
+            $.HSCore.components.HSCarousel.init('.js-carousel');
+
+            $.HSCore.components.HSGoTo.init('.js-go-to');
+        });
+    </script>
+</body>
+</html>

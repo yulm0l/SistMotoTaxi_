@@ -1,0 +1,105 @@
+﻿@model SistMotoTaxi.Models.Usuarios
+
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_MenuLayout.cshtml";
+}
+
+<h2>Roles</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Usuarios</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <form method="post">
+        @*action=" = /Usuario/Index"*@
+        <table>
+            <tr>
+                <td style=" padding: 10px">IdRol</td>
+                <td style=" padding: 10px"><input class="form-control" type="text" name"="number" required /></td>
+            </tr>
+            <tr>
+                <td style=" padding: 10px">Rol</td>
+                <td style=" padding: 10px"><input class="form-control" type="text" name"="nom" required /></td>
+            </tr>
+
+            <tr>
+                <td style="padding: 10px"></td>
+                <td style="padding: 10px">
+                    <button class=" btn btn-success" input type="submit" name="btn1" id="btn1"><span class="glyphicon glyphicon-saved" href="@Url.Action("Alta","Usuarios")">Guardar</span></button>
+                    <button class=" btn btn-primary" input type="reset" name="btn2" id="btn2"><span class="glyphicon glyphicon-remove" href="@Url.Action("Eliminar","Usuarios")">Eliminar</span></button>
+                    <a class="btn btn-danger"><span class="glyphicon glyphicon-backward" href="@Url.Action("Inicio", "Menu")">Menú </span></a>
+                    @using (Html.BeginForm("Bandeja", "Usuarios", FormMethod.Post))
+                    {
+                        <a class="btn btn-danger" href="~/Seccion/Index"><span class="glyphicon glyphicon-backward" href="@Url.Action("Bandeja", "Menu")">Ver Lista</span></a>
+                    }
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </form>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdRol, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IdRol, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IdRol, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Rol, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Desc_Rol, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Desc_Rol, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Desc_Rol, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+
+    <tr>
+        <td style="padding: 10px"></td>
+        <td style="padding: 10px">
+            <button class=" btn btn-success" input type="submit" name="btn1" id="btn1"><span class="glyphicon glyphicon-saved" href="@Url.Action("Alta","Usuarios")">Guardar</span></button>
+            <button class=" btn btn-primary" input type="reset" name="btn2" id="btn2"><span class="glyphicon glyphicon-remove" href="@Url.Action("Eliminar","Usuarios")">Eliminar</span></button>
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <a class="btn btn-danger"><span class="glyphicon glyphicon-backward" href="@Url.Action("Inicio", "Menu")">Menú</span></a>
+            }
+        </td>
+
+    </tr>
+</div>
+}

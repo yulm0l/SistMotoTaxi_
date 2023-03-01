@@ -1,0 +1,16 @@
+﻿@{
+    SistMotoTaxi.Models.Usuarios oUsuario = (SistMotoTaxi.Models.Usuarios)Session["Usuario"];
+}
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_MenuLayout.cshtml";
+}SistMotoTaxi
+
+<div class="container g-pt-150 g-pb-50">
+    <section class="container g-pt-30 g-pb-50">
+        <h3 class="h5 g-mb-10 sub-titulo">Bienvenido Usuario: @Convert.ToString(oUsuario.Usuario)</h3>
+        <hr class="green">
+    </section>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SistMotoTaxi.Models.Usuarios>
+
+@{
+    ViewBag.Title = "Bandeja";
+    Layout = "~/Views/Shared/_MenuLayout.cshtml";
+}
+
+<h2>Bandeja</h2>
+
+@*<p>
+        @Html.ActionLink("Bandeja", "Usuarios")
+    </p>*@
+@using (Html.BeginForm("Bandeja", "Usuarios", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="container-fluid">
+        <div class="page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Alta Usuario</a></li>
+            </ol>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc_Rol)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdRol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desc_Rol)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Usuarios", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Eliminar", "Usuarios", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Inicio", "Menu", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+    }
